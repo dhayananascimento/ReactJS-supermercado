@@ -1,0 +1,36 @@
+.container {
+  min-height: 5rem;
+  padding: 0 1rem;
+  background-color: var(--orange-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  h1 {
+    text-transform: capitalize;
+    color: var(--white-text);
+  }
+
+  button {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+
+    color: var(--white-text);
+    background-color: var(--orange-primary);
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: auto 0;
+    }
+  }
+}

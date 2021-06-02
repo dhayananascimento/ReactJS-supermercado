@@ -58,7 +58,7 @@ export default function Details({ location }) {
       },
     ]);
 
-    history.push({ pathname: "/" });
+    history.push({ pathname: "/cart" });
   }
 
   return (
@@ -68,15 +68,16 @@ export default function Details({ location }) {
       <div className={styles.details}>
         <div>
           <Link to="/">Voltar</Link>
-          <img src={data.image} alt={data.description} />
+          <img src={data?.image} alt={data?.description} />
         </div>
 
         <div className={styles.description}>
-          <strong>{data.description}</strong>
+          <strong>{data?.description}</strong>
 
           {data?.promotion && data?.promotion.kind === "buy-x-take-y" && (
             <p>
-              Leve <span>4</span> e pague <span>3</span>
+              Leve <span>{data?.promotion?.value}</span> e pague{" "}
+              <span>{data?.promotion?.base}</span>
             </p>
           )}
 
@@ -84,17 +85,17 @@ export default function Details({ location }) {
             <p>
               De R${" "}
               <s>
-                <span>{ConvertCurrency(data.price)}</span>
+                <span>{ConvertCurrency(data?.price)}</span>
               </s>{" "}
               por R$ <span>{ConvertCurrency(data?.offer)}</span>
             </p>
           ) : (
             <p>
-              R$ <span>{ConvertCurrency(data.price)}</span>
+              R$ <span>{ConvertCurrency(data?.price)}</span>
             </p>
           )}
 
-          {data.stock ? (
+          {data?.stock ? (
             <>
               <label htmlFor="quantity">Quantidade:</label>
               <div className={styles.quantity}>
@@ -105,14 +106,14 @@ export default function Details({ location }) {
                   value={quantity}
                   disabled
                   minLength={1}
-                  maxLength={data.stock}
+                  maxLength={data?.stock}
                 />
                 <button onClick={addQuantity}>+</button>
               </div>
 
               <button
                 type="button"
-                disabled={!data.stock}
+                disabled={!data?.stock}
                 className={styles.buy}
                 onClick={addItemToCart}
               >

@@ -8,9 +8,11 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
-  h1 {
+  a {
     text-transform: capitalize;
     color: var(--white-text);
+    text-decoration: none;
+    font-size: 2rem;
   }
 
   button {

@@ -1,0 +1,149 @@
+.cotainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+
+  max-width: 1024px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.5);
+
+  > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    &:first-child {
+      img {
+        width: 80%;
+      }
+
+      a {
+        align-self: flex-start;
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &:last-child {
+      border-left: 2px solid var(--gray);
+    }
+  }
+}
+
+.description {
+  strong {
+    padding: 0.5rem 0;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+
+    > span {
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 0.5rem 0.25rem;
+    }
+  }
+
+  label {
+    margin-top: 3rem;
+  }
+}
+
+.quantity {
+  display: flex;
+  background-color: var(--gray);
+  width: 170px;
+  margin-top: 0.5rem;
+
+  input {
+    width: 100px;
+    border: none;
+    background-color: var(--gray);
+    outline: 0;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    outline: 0;
+
+    width: 35px;
+    height: 35px;
+    background-color: var(--orange-secondary);
+
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--white-text);
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+.buy {
+  cursor: pointer;
+  outline: 0;
+  border: none;
+
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--orange-secondary);
+  border: 2px solid var(--orange-secondary);
+  background-color: var(--background);
+
+  margin-top: 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--white-text);
+    background-color: var(--orange-secondary);
+  }
+}
+
+.unavailable {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--gray);
+}
+
+@media (max-width: 1080px) {
+  .details {
+    flex-direction: column;
+    margin: 2rem 1rem;
+
+    > div {
+      flex: auto;
+      width: 100%;
+      height: auto;
+
+      &:last-child {
+        border-left: none;
+      }
+    }
+  }
+}

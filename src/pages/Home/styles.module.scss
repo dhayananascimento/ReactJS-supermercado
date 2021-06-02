@@ -1,6 +1,10 @@
-.dataWrapper,
-.loading {
-  width: 100%;
+.cotainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dataWrapper {
+  flex: 1;
   max-width: 1800px;
   margin: 0 auto;
   padding: 3rem 2rem;
@@ -8,12 +12,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.dataWrapper {
   gap: 50px;
-}
-
-.loading {
-  align-items: center;
 }

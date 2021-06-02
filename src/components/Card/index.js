@@ -1,9 +1,21 @@
+import { useHistory } from "react-router-dom";
+
 import ConvertCurrency from "../../utils/ConvertCurrency.js";
 import styles from "./styles.module.scss";
 
 const Card = ({ data }) => {
+  let history = useHistory();
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onClick={() => {
+        history.push({
+          pathname: "/details",
+          state: data,
+        });
+      }}
+    >
       <img src={data.image} alt={data.description} />
       <strong>{data.description}</strong>
 

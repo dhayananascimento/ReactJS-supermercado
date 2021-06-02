@@ -12,14 +12,13 @@ const images = {
 
 export default function Home() {
   const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function requestData() {
     try {
       const response = await axios.get(
         "https://run.mocky.io/v3/c7c87764-f0ae-4723-906d-39d16728525a"
       );
-      console.log(response);
       setData(response.data);
     } catch (error) {
       alert(error);
@@ -27,21 +26,24 @@ export default function Home() {
   }
 
   useEffect(() => {
-    setLoading(true);
     requestData();
     setLoading(false);
   }, []);
 
   if (loading) {
     return (
-      <div className={styles.dataWrapper}>
-        <h1>Carregando...</h1>
+      <div className={styles.container}>
+        <Header />
+
+        <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
+          Carregando...
+        </h1>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
 
       <div className={styles.dataWrapper}>

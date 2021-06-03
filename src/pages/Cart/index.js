@@ -9,8 +9,43 @@ export default function Cart() {
   const [cart, setCart] = useContext(ListContext);
   const [products, setProducts] = useState([]);
 
+  function removeItem(indexItem) {
+    let quantity = cart[indexItem].quantity;
+    let data = [...cart];
+
+    if (quantity > 1) {
+      data.map((item, index) => {
+        if (index === indexItem) item.quantity = quantity - 1;
+        return true;
+      });
+    } else {
+      data.splice(indexItem, 1);
+    }
+
+    setCart(data);
+  }
+
+  function addItem(indexItem) {
+    let quantity = cart[indexItem].quantity;
+    let data = [...cart];
+
+    data.map((item, index) => {
+      if (index === indexItem) {
+        if (item.quantity < item.stock) {
+          item.quantity = quantity + 1;
+        } else {
+          alert(
+            `Este item possui apenas ${item.stock} unidades disponíveis em stock!`
+          );
+        }
+      }
+      return true;
+    });
+
+    setCart(data);
+  }
+
   function handleCheckout() {
-    console.log(cart);
     let totalPrice = 0;
 
     let newCart = cart.map((item) => {
@@ -67,14 +102,32 @@ export default function Cart() {
           </thead>
 
           <tbody>
-            {products.map((item) => {
+            {products.map((item, index) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>
                     <img src={item.image} alt={item.description} />
                   </td>
                   <td>{item.description}</td>
-                  <td>{item.quantity}</td>
+                  <td>
+                    <div>
+                      <button
+                        onClick={() => {
+                          removeItem(index);
+                        }}
+                      >
+                        -
+                      </button>
+                      <input type="text" value={item?.quantity} disabled />
+                      <button
+                        onClick={() => {
+                          addItem(index);
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
                   <td>R$ {ConvertCurrency(item.total)}</td>
                 </tr>
               );

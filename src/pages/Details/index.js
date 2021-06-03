@@ -40,13 +40,21 @@ export default function Details({ location }) {
 
   function addItemToCart() {
     let item = cart;
-
+    let actualQuantity = quantity;
     let oldQuantity = 0;
+
     let findItem = item.find((element) => element.id === data.id);
 
     if (findItem) {
       let findIndex = item.findIndex((element) => element.id === data.id);
-      oldQuantity = item[findIndex].quantity;
+
+      if (actualQuantity + item[findIndex].quantity > item[findIndex].stock) {
+        actualQuantity = item[findIndex].stock - item[findIndex].quantity;
+        alert(`Este item possui ${actualQuantity} unidades restantes.`);
+        return;
+      } else {
+        oldQuantity = item[findIndex].quantity;
+      }
       item.splice(findIndex, 1);
     }
 
@@ -54,7 +62,7 @@ export default function Details({ location }) {
       ...item,
       {
         ...data,
-        quantity: quantity + oldQuantity,
+        quantity: actualQuantity + oldQuantity,
       },
     ]);
 

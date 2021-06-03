@@ -1,13 +1,15 @@
 import { ListContext } from "../../store/providers/ListProvider";
 import { useContext, useEffect, useState } from "react";
-import ConvertCurrency from "../../utils/ConvertCurrency.js";
+import { Link } from "react-router-dom";
 
+import ConvertCurrency from "../../utils/ConvertCurrency.js";
 import Header from "../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Cart() {
   const [cart, setCart] = useContext(ListContext);
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
 
   function removeItem(indexItem) {
     let quantity = cart[indexItem].quantity;
@@ -80,18 +82,34 @@ export default function Cart() {
     });
 
     setProducts(newCart);
+    setTotal(totalPrice);
   }
 
   useEffect(() => {
     handleCheckout();
   }, [cart]);
 
+  if (!cart.length) {
+    return (
+      <div className={styles.container}>
+        <Header />
+
+        <div className={styles.empty}>
+          <h1>Carrinho não possui itens!</h1>
+          <Link to="/">Continuar navegando...</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <Header />
 
-      <div>
-        <table className={styles.products}>
+      <div className={styles.products}>
+        <Link to="/">Voltar para página inicial</Link>
+
+        <table className={styles.productsList}>
           <thead>
             <tr>
               <th></th>
@@ -104,13 +122,13 @@ export default function Cart() {
           <tbody>
             {products.map((item, index) => {
               return (
-                <tr key={item.id}>
+                <tr key={item.id} className={styles.card}>
                   <td>
                     <img src={item.image} alt={item.description} />
                   </td>
                   <td>{item.description}</td>
                   <td>
-                    <div>
+                    <div className={styles.quantity}>
                       <button
                         onClick={() => {
                           removeItem(index);
@@ -134,6 +152,16 @@ export default function Cart() {
             })}
           </tbody>
         </table>
+
+        <div className={styles.checkout}>
+          <div>
+            <p>Frete: R$ {ConvertCurrency(9.9)}</p>
+            <p>Subtotal: R$ {ConvertCurrency(total)}</p>
+            <p>Total: R$ {ConvertCurrency(total + 9.9)}</p>
+          </div>
+
+          <button>Finalizar compra</button>
+        </div>
       </div>
     </div>
   );

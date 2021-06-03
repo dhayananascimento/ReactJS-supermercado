@@ -2,3 +2,146 @@
   display: flex;
   flex-direction: column;
 }
+
+.empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--gray);
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+.products {
+  width: 100%;
+  max-width: 1800px;
+  padding: 1rem;
+  margin: 2rem auto 0;
+
+  a {
+    align-self: flex-start;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem;
+  }
+}
+
+.productsList {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.5);
+
+  thead {
+    font-size: 2rem;
+
+    th {
+      padding: 1rem;
+    }
+  }
+}
+
+.card {
+  td {
+    text-align: center;
+    padding: 1rem;
+
+    &:last-child {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+}
+
+.quantity {
+  display: flex;
+  background-color: var(--gray);
+  width: 170px;
+  margin: 0 auto;
+
+  input {
+    width: 100px;
+    border: none;
+    background-color: var(--gray);
+    outline: 0;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    outline: 0;
+
+    width: 35px;
+    height: 35px;
+    background-color: var(--orange-secondary);
+
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--white-text);
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 1rem 1rem 0;
+
+  > div {
+    margin-bottom: 2rem;
+  }
+
+  button {
+    cursor: pointer;
+    outline: 0;
+    border: none;
+
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--orange-secondary);
+    border: 2px solid var(--orange-secondary);
+    background-color: var(--background);
+
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+
+    &:hover {
+      color: var(--white-text);
+      background-color: var(--orange-secondary);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .products {
+    overflow: auto;
+    margin: 2rem 1rem 0;
+  }
+}

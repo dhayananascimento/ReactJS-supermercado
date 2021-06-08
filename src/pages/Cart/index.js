@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import styles from "./styles.module.scss";
+
 import ConvertCurrency from "../../utils/ConvertCurrency.js";
 import { useCart } from "../../store/providers/CartProvider";
 import { useDelivery } from "../../store/providers/DeliveryProvider";
 
 import Header from "../../components/Header";
-import styles from "./styles.module.scss";
+import CartCard from "../../components/CartCard/index.js";
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
@@ -126,32 +128,13 @@ export default function Cart() {
           <tbody>
             {products.map((item, index) => {
               return (
-                <tr key={item.id} className={styles.card}>
-                  <td>
-                    <img src={item.image} alt={item.description} />
-                  </td>
-                  <td>{item.description}</td>
-                  <td>
-                    <div className={styles.quantity}>
-                      <button
-                        onClick={() => {
-                          removeItem(index);
-                        }}
-                      >
-                        -
-                      </button>
-                      <input type="text" value={item?.quantity} disabled />
-                      <button
-                        onClick={() => {
-                          addItem(index);
-                        }}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                  <td>R$ {ConvertCurrency(item.total)}</td>
-                </tr>
+                <CartCard
+                  key={item.id}
+                  data={item}
+                  index={index}
+                  removeItem={removeItem}
+                  addItem={addItem}
+                />
               );
             })}
           </tbody>

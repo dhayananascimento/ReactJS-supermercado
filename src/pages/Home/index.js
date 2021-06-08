@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "./styles.module.scss";
 
 import Header from "../../components/Header";
-import Card from "../../components/Card";
+import HomeCard from "../../components/HomeCard";
 
 import { useDelivery } from "../../store/providers/DeliveryProvider";
 
@@ -54,7 +54,7 @@ export default function Home() {
         <div className={styles.dataWrapper}>
           {data.map((item) => {
             return (
-              <Card
+              <HomeCard
                 key={item.id}
                 data={{ ...item, promotionImage: images.PROMOTION }}
               />

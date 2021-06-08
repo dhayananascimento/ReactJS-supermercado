@@ -9,6 +9,7 @@ import { useDelivery } from "../../store/providers/DeliveryProvider";
 
 import Header from "../../components/Header";
 import CartCard from "../../components/CartCard/index.js";
+import Button from "../../components/Button/index.js";
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
@@ -147,7 +148,13 @@ export default function Cart() {
             <p>Total: R$ {ConvertCurrency(total + delivery)}</p>
           </div>
 
-          <button>Finalizar compra</button>
+          <Button
+            onClick={() => {
+              alert("Compra finalizada!");
+            }}
+          >
+            Finalizar compra
+          </Button>
         </div>
       </div>
     </div>

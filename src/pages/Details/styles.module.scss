@@ -66,28 +66,6 @@
   }
 }
 
-.buy {
-  cursor: pointer;
-  outline: 0;
-  border: none;
-
-  font-weight: 800;
-  font-size: 1.25rem;
-  color: var(--orange-secondary);
-  border: 2px solid var(--orange-secondary);
-  background-color: var(--background);
-
-  margin-top: 3rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-
-  &:hover {
-    color: var(--white-text);
-    background-color: var(--orange-secondary);
-  }
-}
-
 .unavailable {
   margin-top: 3rem;
   font-size: 1.5rem;

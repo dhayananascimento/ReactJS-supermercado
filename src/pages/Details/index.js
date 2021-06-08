@@ -8,6 +8,7 @@ import ConvertCurrency from "../../utils/ConvertCurrency.js";
 
 import Header from "../../components/Header";
 import QuantityButton from "../../components/QuantityButton";
+import Button from "../../components/Button";
 
 export default function Details({ location }) {
   let history = useHistory();
@@ -116,14 +117,7 @@ export default function Details({ location }) {
                 stock={data?.stock}
               />
 
-              <button
-                type="button"
-                disabled={!data?.stock}
-                className={styles.buy}
-                onClick={addItemToCart}
-              >
-                Adicionar ao carrinho
-              </button>
+              <Button onClick={addItemToCart}>Adicionar ao carrinho</Button>
             </>
           ) : (
             <p className={styles.unavailable}>

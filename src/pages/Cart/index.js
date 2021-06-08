@@ -1,15 +1,19 @@
-import { ListContext } from "../../store/providers/ListProvider";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import ConvertCurrency from "../../utils/ConvertCurrency.js";
+import { useCart } from "../../store/providers/CartProvider";
+import { useDelivery } from "../../store/providers/DeliveryProvider";
+
 import Header from "../../components/Header";
 import styles from "./styles.module.scss";
 
 export default function Cart() {
-  const [cart, setCart] = useContext(ListContext);
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const { cart, setCart } = useCart();
+  const { delivery } = useDelivery();
 
   function removeItem(indexItem) {
     let quantity = cart[indexItem].quantity;
@@ -155,9 +159,9 @@ export default function Cart() {
 
         <div className={styles.checkout}>
           <div>
-            <p>Frete: R$ {ConvertCurrency(9.9)}</p>
+            <p>Frete: R$ {ConvertCurrency(delivery)}</p>
             <p>Subtotal: R$ {ConvertCurrency(total)}</p>
-            <p>Total: R$ {ConvertCurrency(total + 9.9)}</p>
+            <p>Total: R$ {ConvertCurrency(total + delivery)}</p>
           </div>
 
           <button>Finalizar compra</button>

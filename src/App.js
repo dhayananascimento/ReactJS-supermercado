@@ -1,13 +1,16 @@
 import Routes from "./routes";
 import "./global.scss";
 
-import ListProvider from "./store/providers/ListProvider.js";
+import CartProvider from "./store/providers/CartProvider.js";
+import DeliveryProvider from "./store/providers/DeliveryProvider.js";
 
 function App() {
   return (
-    <ListProvider>
-      <Routes />
-    </ListProvider>
+    <CartProvider>
+      <DeliveryProvider>
+        <Routes />
+      </DeliveryProvider>
+    </CartProvider>
   );
 }
 

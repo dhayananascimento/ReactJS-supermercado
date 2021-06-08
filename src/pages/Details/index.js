@@ -1,10 +1,11 @@
-import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+
 import styles from "./styles.module.scss";
 
-import { ListContext } from "../../store/providers/ListProvider.js";
+import { useCart } from "../../store/providers/CartProvider";
 import ConvertCurrency from "../../utils/ConvertCurrency.js";
+
 import Header from "../../components/Header";
 
 export default function Details({ location }) {
@@ -12,7 +13,7 @@ export default function Details({ location }) {
 
   const data = location.state;
   const [quantity, setQuantity] = useState(1);
-  const [cart, setCart] = useContext(ListContext);
+  const { cart, setCart } = useCart();
 
   function removeQuantity() {
     let value = quantity;

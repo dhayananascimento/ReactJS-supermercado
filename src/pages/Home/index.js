@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import styles from "./styles.module.scss";
+
 import Header from "../../components/Header";
 import Card from "../../components/Card";
-import styles from "./styles.module.scss";
+
+import { useDelivery } from "../../store/providers/DeliveryProvider";
 
 const images = {
   PROMOTION:
@@ -11,15 +14,18 @@ const images = {
 };
 
 export default function Home() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { setDelivery } = useDelivery();
 
   async function requestData() {
     try {
       const response = await axios.get(
         "https://run.mocky.io/v3/c7c87764-f0ae-4723-906d-39d16728525a"
       );
-      setData(response.data);
+      setData(response.data.items);
+      setDelivery(response.data.delivery_tax);
     } catch (error) {
       alert(error);
     }
@@ -30,7 +36,7 @@ export default function Home() {
     setLoading(false);
   }, []);
 
-  if (loading) {
+  if (loading)
     return (
       <div className={styles.container}>
         <Header />
@@ -40,22 +46,21 @@ export default function Home() {
         </h1>
       </div>
     );
-  }
+  else
+    return (
+      <div className={styles.container}>
+        <Header />
 
-  return (
-    <div className={styles.container}>
-      <Header />
-
-      <div className={styles.dataWrapper}>
-        {data?.items.map((item) => {
-          return (
-            <Card
-              key={item.id}
-              data={{ ...item, promotionImage: images.PROMOTION }}
-            />
-          );
-        })}
+        <div className={styles.dataWrapper}>
+          {data.map((item) => {
+            return (
+              <Card
+                key={item.id}
+                data={{ ...item, promotionImage: images.PROMOTION }}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
 }

@@ -7,12 +7,14 @@ import { useCart } from "../../store/providers/CartProvider";
 import ConvertCurrency from "../../utils/ConvertCurrency.js";
 
 import Header from "../../components/Header";
+import QuantityButton from "../../components/QuantityButton";
 
 export default function Details({ location }) {
   let history = useHistory();
 
   const data = location.state;
   const [quantity, setQuantity] = useState(1);
+
   const { cart, setCart } = useCart();
 
   function removeQuantity() {
@@ -106,19 +108,13 @@ export default function Details({ location }) {
 
           {data?.stock ? (
             <>
-              <label htmlFor="quantity">Quantidade:</label>
-              <div className={styles.quantity}>
-                <button onClick={removeQuantity}>-</button>
-                <input
-                  id="quantity"
-                  type="text"
-                  value={quantity}
-                  disabled
-                  minLength={1}
-                  maxLength={data?.stock}
-                />
-                <button onClick={addQuantity}>+</button>
-              </div>
+              <label>Quantidade:</label>
+              <QuantityButton
+                removeQuantity={removeQuantity}
+                addQuantity={addQuantity}
+                quantity={quantity}
+                stock={data?.stock}
+              />
 
               <button
                 type="button"

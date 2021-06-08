@@ -66,41 +66,6 @@
   }
 }
 
-.quantity {
-  display: flex;
-  background-color: var(--gray);
-  width: 170px;
-  margin-top: 0.5rem;
-
-  input {
-    width: 100px;
-    border: none;
-    background-color: var(--gray);
-    outline: 0;
-    text-align: center;
-    font-size: 1.25rem;
-  }
-
-  button {
-    cursor: pointer;
-    border: none;
-    outline: 0;
-
-    width: 35px;
-    height: 35px;
-    background-color: var(--orange-secondary);
-
-    font-weight: 800;
-    font-size: 1.25rem;
-    color: var(--white-text);
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.95);
-    }
-  }
-}
-
 .buy {
   cursor: pointer;
   outline: 0;

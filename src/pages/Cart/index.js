@@ -145,7 +145,7 @@ export default function Cart() {
           <div>
             <p>Frete: R$ {ConvertCurrency(delivery)}</p>
             <p>Subtotal: R$ {ConvertCurrency(total)}</p>
-            <p>Total: R$ {ConvertCurrency(total + delivery)}</p>
+            <strong style={{fontSize: "1.25rem"}}>Total: R$ {ConvertCurrency(total + delivery)}</strong>
           </div>
 
           <Button

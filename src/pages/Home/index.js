@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import styles from "./styles.module.scss";
+import { useDelivery } from "../../store/providers/DeliveryProvider";
 
 import Header from "../../components/Header";
 import HomeCard from "../../components/HomeCard";
-
-import { useDelivery } from "../../store/providers/DeliveryProvider";
 
 const images = {
   PROMOTION:

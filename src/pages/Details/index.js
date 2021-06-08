@@ -14,8 +14,8 @@ export default function Details({ location }) {
   let history = useHistory();
 
   const data = location.state;
+  
   const [quantity, setQuantity] = useState(1);
-
   const { cart, setCart } = useCart();
 
   function removeQuantity() {

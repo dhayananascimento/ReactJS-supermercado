@@ -37,7 +37,7 @@ export default function Details({ location }) {
       setQuantity(value);
     } else {
       alert(
-        `Este item possui apenas ${data.stock} unidades disponíveis em stock!`
+        `Este item possui apenas ${data.stock} unidades disponíveis em estoque!`
       );
     }
   }

@@ -44,7 +44,7 @@ export default function Cart() {
           item.quantity = quantity + 1;
         } else {
           alert(
-            `Este item possui apenas ${item.stock} unidades disponíveis em stock!`
+            `Este item possui apenas ${item.stock} unidades disponíveis em estoque!`
           );
         }
       }

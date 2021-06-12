@@ -21,11 +21,12 @@ const HomeCard = ({ data }) => {
 
       {data?.offer ? (
         <div className={styles.offer}>
-          <s>
-            R$ <span>{ConvertCurrency(data.price)}</span>
-          </s>
           <p>
-            R$ <span>{ConvertCurrency(data?.offer)}</span>
+            R$
+            <s>{ConvertCurrency(data.price)}</s>
+          </p>
+          <p>
+            R$ <span>{ConvertCurrency(data.offer)}</span>
           </p>
         </div>
       ) : (

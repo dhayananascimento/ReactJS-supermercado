@@ -14,7 +14,7 @@ export default function Details({ location }) {
   let history = useHistory();
 
   const data = location.state;
-  
+
   const [quantity, setQuantity] = useState(1);
   const { cart, setCart } = useCart();
 
@@ -86,22 +86,25 @@ export default function Details({ location }) {
         <div className={styles.description}>
           <strong>{data?.description}</strong>
 
-          {data?.promotion && data?.promotion.kind === "buy-x-take-y" && (
+          {data?.promotion && data.promotion.kind === "buy-x-take-y" && (
             <p>
-              Leve <span>{data?.promotion?.value}</span> e pague{" "}
-              <span>{data?.promotion?.base}</span>
+              Leve <span>{data.promotion?.value}</span> e pague{" "}
+              <span>{data.promotion?.base}</span>
             </p>
           )}
 
           {data?.offer ? (
-            <p>
-              De R${" "}
-              <s>
-                <span>{ConvertCurrency(data?.price)}</span>
-              </s>{" "}
-              por R$ <span>{ConvertCurrency(data?.offer)}</span>
-            </p>
+            <div className={styles.offer}>
+              <p>
+                De R$
+                <s>{ConvertCurrency(data.price)}</s>
+              </p>
+              <p>
+                Por R$ <span>{ConvertCurrency(data.offer)}</span>
+              </p>
+            </div>
           ) : (
+
             <p>
               R$ <span>{ConvertCurrency(data?.price)}</span>
             </p>
@@ -114,7 +117,7 @@ export default function Details({ location }) {
                 removeQuantity={removeQuantity}
                 addQuantity={addQuantity}
                 quantity={quantity}
-                stock={data?.stock}
+                stock={data.stock}
               />
 
               <Button onClick={addItemToCart}>Adicionar ao carrinho</Button>

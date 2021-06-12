@@ -51,11 +51,11 @@
 
   p {
     text-align: center;
-    font-size: 1.125rem;
+    font-size: 0.75rem;
     margin-bottom: 0.5rem;
 
     > span {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 600;
       padding: 0.5rem 0.25rem;
     }
@@ -63,6 +63,28 @@
 
   label {
     margin-top: 3rem;
+  }
+
+  div.offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p:first-child {
+      s {
+        font-size: 1.125rem;
+        font-weight: 600;
+        padding: 0 0.25rem;
+      }
+    }
+
+    p:last-child {
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      color: var(--offer-text);
+      background-color: var(--offer-background);
+      border: 1px solid var(--offer-text);
+    }
   }
 }
 
